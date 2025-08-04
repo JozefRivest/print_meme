@@ -23,9 +23,9 @@ print_meme <- function(which_meme = "eigenvalued") {
 
   if (which_meme == "eigenvalued") {
     # Try to find image in package first, then current directory
-    img_path <- system.file("extdata", "eigenvalued.PNG", package = "printmeme")
+    img_path <- system.file("extdata", "eigenvalued.png", package = "printmeme")
     if (img_path == "" || !file.exists(img_path)) {
-      img_path <- "eigenvalued.PNG"
+      img_path <- "eigenvalued.png"
     }
 
     if (file.exists(img_path)) {
@@ -33,7 +33,7 @@ print_meme <- function(which_meme = "eigenvalued") {
       plot(img)
       return(invisible(img))
     } else {
-      cat("Image file not found: eigenvalued.PNG\n")
+      cat("Image file not found: eigenvalued.png\n")
       return(invisible(NULL))
     }
   }
