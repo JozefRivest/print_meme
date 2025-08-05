@@ -12,6 +12,7 @@
 #' print_meme()
 #' print_meme("eigenvalued")
 #' print_meme("identified")
+#' print_meme("latex")
 #' }
 print_meme <- function(which_meme = "eigenvalued") {
   # Check if magick is installed, install if not
@@ -54,10 +55,26 @@ print_meme <- function(which_meme = "eigenvalued") {
       return(invisible(NULL))
     }
   }
+  if (which_meme == "latex") {
+    # Try to find image in package first, then current directory
+    img_path <- system.file("extdata", "latex.JPG", package = "printmeme")
+    if (img_path == "" || !file.exists(img_path)) {
+      img_path <- "latex.JPG"
+    }
 
-  if (!which_meme %in% c("eigenvalued", "identified")) {
+    if (file.exists(img_path)) {
+      img <- image_read(img_path)
+      plot(img)
+      return(invisible(img))
+    } else {
+      cat("Image file not found: identified.png\n")
+      return(invisible(NULL))
+    }
+  }
+
+  if (!which_meme %in% c("eigenvalued", "identified", "latex")) {
     cat("Unknown meme:", which_meme, "\n")
-    cat("Available memes: 'eigenvalued', 'identified'\n")
+    cat("Available memes: 'eigenvalued', 'identified', 'latex'\n")
     return(invisible(NULL))
   }
 }
