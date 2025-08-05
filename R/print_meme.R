@@ -92,7 +92,7 @@ print_meme <- function(which_meme = "eigenvalued") {
 
   if (!which_meme %in% c("eigenvalued", "identified", "latex...", "is latex better?")) {
     cat("Unknown meme:", which_meme, "\n")
-    cat("Available memes: 'eigenvalued', 'identified', 'latex'\n")
+    cat("Available memes: 'eigenvalued', 'identified', 'latex...' 'is latex better?'\n")
     return(invisible(NULL))
   }
 }
